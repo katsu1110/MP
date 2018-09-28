@@ -25,10 +25,10 @@ function [E,f,normE2] = wignerVille(oct,u,ksi,nFFT,range,limitFreq)
 
 if ~exist('limitFreq','var'),           limitFreq=1;             end
 
-if ksi > nFFT/2
-    disp( 'ksi should not exceed nFFT/2,taking mirror image');
-    ksi = nFFT - ksi;
-end
+% if ksi > nFFT/2
+%     disp( 'ksi should not exceed nFFT/2,taking mirror image');
+%     ksi = nFFT - ksi;
+% end
 
 s = 2^oct;
 
@@ -65,6 +65,9 @@ else
 end
 
 E = freqAxis*timeAxis;
+
+% modified by Katsuhisa (28.09.18)
+f = round(f);
 
 % Get normalization constant
 if length(f)<nFFT/2+1
